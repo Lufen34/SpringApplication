@@ -1,7 +1,5 @@
 package com.springapp.SpringApplication;
 
-import com.springapp.SpringApplication.library.Author;
-import com.springapp.SpringApplication.library.Book;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

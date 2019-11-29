@@ -8,13 +8,16 @@ import java.util.Set;
 @Entity
 public class Author {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String name;
     private String surname;
 
     @ManyToMany(mappedBy = "author")
     private Set<Book> bookset = new HashSet<Book>();
+
+    public Author(){  
+    }
 
     public Author(String name, String surname) {
         this.name = name;
@@ -51,11 +54,11 @@ public class Author {
         this.bookset = bookset;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

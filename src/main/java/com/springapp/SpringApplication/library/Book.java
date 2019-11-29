@@ -8,24 +8,37 @@ import java.util.Set;
 @Entity
 public class Book {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String name;
     private String isbn;
+
+    @OneToOne
+    private Publisher publisher;
 
     @ManyToMany
     @JoinTable(name = "author_book", joinColumns = @JoinColumn(name = "book_id"), inverseJoinColumns = @JoinColumn(name = "author_id"))
     private Set<Author> author = new HashSet<Author>();
+
+    public Book(){   
+    }
 
     public Book(String name, String isbn) {
         this.name = name;
         this.isbn = isbn;
     }
 
-    public Book(String name, String isbn, Set<Author> authorSet) {
+    public Book(String name, String isbn, Publisher publisher) {
+        this.name = name;
+        this.isbn = isbn;
+        this.publisher = publisher;
+    }
+
+    public Book(String name, String isbn, Set<Author> authorSet, Publisher publisher) {
         this.name = name;
         this.isbn = isbn;
         this.author = authorSet;
+        this.publisher = publisher;
     }
 
     public String getName() {
@@ -51,11 +64,11 @@ public class Book {
     public void setAuthorSet(Set<Author> authorSet) {
         this.author = authorSet;
     }
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -81,4 +94,19 @@ public class Book {
                 ", author=" + author +
                 '}';
     }
+
+    /**
+     * @return Publisher return the publisher
+     */
+    public Publisher getPublisher() {
+        return publisher;
+    }
+
+    /**
+     * @param publisher the publisher to set
+     */
+    public void setPublisher(Publisher publisher) {
+        this.publisher = publisher;
+    }
+
 }
