@@ -1,12 +1,17 @@
 package com.springapp.SpringApplication;
 
+import com.springapp.SpringApplication.Test.Test;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
 
 @SpringBootApplication
 public class Application {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Application.class, args);
+		ConfigurableApplicationContext conf =  SpringApplication.run(Application.class, args);
+		Test t = conf.getBean(Test.class);
+		t.start();
 	}
 }
