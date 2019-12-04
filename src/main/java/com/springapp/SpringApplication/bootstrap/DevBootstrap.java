@@ -33,7 +33,7 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
     {
         Publisher publisher = new Publisher("Flamarion", "Paris");
         Author jason = new Author("Jason", "Gregory");
-        Book gea = new Book("Game Engine Architecture", "978-1138035454");
+        Book gea = new Book("Game Engine Architecture", "978-1138035454", publisher);
         Book test = new Book("Test book", "864484486", publisher);
         jason.getBookset().add(gea);
         jason.getBookset().add(test);
@@ -47,7 +47,7 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
         
 
         Author eric = new Author("Eric", "Freeman");
-        Book hfdp = new Book("Head First Design Patterns", "9780596007126");
+        Book hfdp = new Book("Head First Design Patterns", "9780596007126", publisher);
         eric.getBookset().add(hfdp);
         hfdp.getAuthorSet().add(eric);
 
